@@ -43,3 +43,23 @@ class Connect4 {
           }
           return null;
         }
+
+        $board.on('mouseenter', '.col.empty', function() {
+            if (that.isGameOver) return;
+            const col = $(this).data('col');
+            const $lastEmptyCell = findLastEmptyCell(col);
+            $lastEmptyCell.addClass(`next-${that.player}`);
+          });
+      
+          $board.on('mouseleave', '.col', function() {
+            $('.col').removeClass(`next-${that.player}`);
+          });
+      
+          $board.on('click', '.col.empty', function() {
+            if (that.isGameOver) return;
+            const col = $(this).data('col');
+            const $lastEmptyCell = findLastEmptyCell(col);
+            $lastEmptyCell.removeClass(`empty next-${that.player}`);
+            $lastEmptyCell.addClass(that.player);
+            $lastEmptyCell.data('player', that.player);
+      
