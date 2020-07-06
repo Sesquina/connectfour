@@ -82,3 +82,7 @@ class Connect4 {
         
           checkForWinner(row, col) {
             const that = this;
+
+            function $getCell(i, j) {
+                return $(`.col[data-row='${i}'][data-col='${j}']`);
+              }
