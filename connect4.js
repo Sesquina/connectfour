@@ -74,7 +74,7 @@ class Connect4 {
                 return;
               }
         
-              that.player = (that.player === 'red') ? 'blue' : 'red';
+              that.player = (that.player === 'red') ? 'Blue' : 'red';
               that.onPlayerMove();
               $(this).trigger('mouseenter');
             });
