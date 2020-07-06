@@ -63,3 +63,22 @@ class Connect4 {
             $lastEmptyCell.addClass(that.player);
             $lastEmptyCell.data('player', that.player);
       
+            const winner = that.checkForWinner(
+                $lastEmptyCell.data('row'), 
+                $lastEmptyCell.data('col')
+              )
+              if (winner) {
+                that.isGameOver = true;
+                alert(`Game Over! Player ${that.player} has won!`);
+                $('.col.empty').removeClass('empty');
+                return;
+              }
+        
+              that.player = (that.player === 'red') ? 'blue' : 'red';
+              that.onPlayerMove();
+              $(this).trigger('mouseenter');
+            });
+          }
+        
+          checkForWinner(row, col) {
+            const that = this;
