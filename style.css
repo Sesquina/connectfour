@@ -20,3 +20,18 @@ body {
     cursor: pointer;
   }
   
+  .next-red {
+    background-color: rgba(255, 0, 0, 0.2);
+  }
+  
+  .next-blue{
+    background-color: rgba(11, 26, 236, 0.2);
+  }
+  
+  .col.red {
+    background-color: red;
+  }
+  
+  .col.blue {
+    background-color: blue;
+  }
