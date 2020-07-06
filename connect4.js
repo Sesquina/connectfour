@@ -28,4 +28,18 @@ class Connect4 {
           $board.append($row);
         }
       }
+   
+      setupEventListeners() {
+        const $board = $(this.selector);
+        const that = this;
     
+        function findLastEmptyCell(col) {
+          const cells = $(`.col[data-col='${col}']`);
+          for (let i = cells.length - 1; i >= 0; i--) {
+            const $cell = $(cells[i]);
+            if ($cell.hasClass('empty')) {
+              return $cell;
+            }
+          }
+          return null;
+        }
