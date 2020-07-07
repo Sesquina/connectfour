@@ -92,7 +92,7 @@ class Connect4 { //Declare a class & constructor connect to main.js
            //$(this).trigger('mouseenter');---trigger doesn't work here
               that.player = (that.player === 'red') ? 'blue' : 'red';//If a player is already equal to Red, I will change it to Black otherwise it will be Red.
               that.onPlayerMove();
-              $(this).trigger('mouseenter');//Used for the Event mouseenter to trigger on the piece that is being placed. Invoke 
+              $(this).trigger('mouseenter');//Used for the Event mouseenter to trigger on the player's piece that is being placed. 
             });
           }
         
