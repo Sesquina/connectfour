@@ -3,6 +3,10 @@ $(document).ready(function () {
   //TODO: Draw a Grid & pass to selector HTML 'connect4'
   //main.js is running the Connect4 object, Passing the selector,
   //Connect4 class is grabbing the selector/DIV & adding HTML to that DIV
+
+  //JQuery is a javascript library(collection of class and methods).
+  //When it is used in a web page it creates its own object. $ holds the referances of that object.
+//Later at any point of time we can use $ to use any jQuery method .
   const connect4 = new Connect4("#connect4");
 
   connect4.onPlayerMove = function () {
