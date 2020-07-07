@@ -67,8 +67,8 @@ class Connect4 { //Declare a class & constructor connect to main.js
             $lastEmptyCell.addClass(`next-${that.player}`);//add Class lastemptycell being equal to CSS 'next' style
           });
       
-          $board.on('mouseleave', '.col', function() {  //Event listener that removes 
-            $('.col').removeClass(`next-${that.player}`);
+          $board.on('mouseleave', '.col', function() {  //Event listener that removes findLastEmptyCell class function
+            $('.col').removeClass(`next-${that.player}`);  //Remove all the classes that have 'next' style
           });
       
           $board.on('click', '.col.empty', function() {
