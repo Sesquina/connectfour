@@ -109,35 +109,35 @@ class Connect4 {
 
   //Once I place these pieces, how do I know if a Player Wins when they connect 4?
 
-  //creak checkwinner function. Inside function has 2 parameters that will take last row/column that was last clicked
+  //create checkwinner function. Inside function has 2 parameters that will take last row/column that was last clicked
   //Check if there is a diagonal/vertical horizontal row or line that allows last piece to win
   //If that piece drops & win, Winner will be alerted
   checkForWinner(row, col) {
     const that = this; //Keep track of player
 
-    function $getCell(i, j) {  //Fixes empty cell function
-      return $(`.col[data-row='${i}'][data-col='${j}']`); //Function takes in row/column return using jquery, same row which matches it
+    function $getCell(r, c) {  //Fixes empty cell function
+      return $(`.col[data-row='${r}'][data-col='${c}']`); //Function takes in row/column return using jquery, same row which matches it
     }
 
     function checkDirection(direction) {
       //Method to Increment in direction while still inside the grid. Check If the color that hit is a match to color looking for
       let total = 0;
-      let i = row + direction.i;
-      let j = col + direction.j;
-      let $next = $getCell(i, j); //Function takes in row/column return using jquery, same row which mathes it
+      let r = row + direction.r;
+      let c = col + direction.c;
+      let $next = $getCell(r, c); //Function takes in row/column return using jquery, same row which mathes it
       while (
-        i >= 0 &&
-        i < that.ROWS &&
-        j >= 0 &&
-        j < that.COLS &&
+        r >= 0 &&
+        r < that.ROWS &&
+        c >= 0 &&
+        c < that.COLS &&
         $next.data("player") === that.player //While the player we are currenly looking at is Equal to 'player' we dropped, We continue to increment
       ) {
         total++;
-        i += direction.i;
-        j += direction.j;
-        $next = $getCell(i, j);  //Get cell of column & row
+        r += direction.r;
+        c += direction.c;
+        $next = $getCell(r, c);  //Get cell of column & row
       }
-      return total; //Bug to check vertical direction. returns sum of While loop
+      return total; //Bug to check vertical direction. Returns sum of While loop
     }
 
     function checkWin(directionA, directionB) {
@@ -153,20 +153,20 @@ class Connect4 {
     }
 
     function checkDiagonalBLtoTR() { //Bottom Left to top right
-      return checkWin({ i: 1, j: -1 }, { i: 1, j: 1 });
+      return checkWin({ r: 1, c: -1 }, { r: 1, c: 1 });
     }
 
-    function checkDiagonalTLtoBR() {
-      return checkWin({ i: 1, j: 1 }, { i: -1, j: -1 });
+    function checkDiagonalTLtoBR() { //Top Left to Bottom right
+      return checkWin({ r: 1, c: 1 }, { r: -1, c: -1 });
     }
 
     function checkVerticals() {
       //Return a function checkWin
-      return checkWin({ i: -1, j: 0 }, { i: 1, j: 0 });
+      return checkWin({ r: -1, c: 0 }, { r: 1, c: 0 }); //This is the axis
     }
 
     function checkHorizontals() {
-      return checkWin({ i: 0, j: -1 }, { i: 0, j: 1 });
+      return checkWin({ r: 0, c: -1 }, { r: 0, c: 1 });
     }
 
     return (  //Return to check wins  
