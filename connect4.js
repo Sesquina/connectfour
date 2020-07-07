@@ -19,7 +19,7 @@ class Connect4 {
   constructor(selector) {
     this.ROWS = 6; //Rows
     this.COLS = 7; //Columns
-    this.player = "Bitcoin"; //Start off as Dashcoin player
+    this.player = "Bitcoin"; //Start off as Bitcoin player
     this.selector = selector;
     this.isGameOver = false;
     this.onPlayerMove = function () {};
