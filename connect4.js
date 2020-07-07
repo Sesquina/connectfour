@@ -19,7 +19,7 @@ class Connect4 {
   constructor(selector) {
     this.ROWS = 6; //Rows
     this.COLS = 7; //Columns
-    this.player = "DashCoin"; //Start off as Dashcoin player
+    this.player = "Bitcoin"; //Start off as Dashcoin player
     this.selector = selector;
     this.isGameOver = false;
     this.onPlayerMove = function () {};
@@ -32,7 +32,7 @@ class Connect4 {
     const $board = $(this.selector); //DOM element of Board
     $board.empty();
     this.isGameOver = false;
-    this.player = "DashCoin";
+    this.player = "Bitcoin";
     for (let row = 0; row < this.ROWS; row++) {
       //For Loop of 6 rows using this.ROWS
       const $row = $("<div>") //$ used to identify jQuery object
@@ -101,7 +101,7 @@ class Connect4 {
         return;
       }
       //$(this).trigger('mouseenter');---trigger doesn't work here //Method alternates between players
-      that.player = that.player === "DashCoin" ? "Bitcoin" : "DashCoin"; //If a player is already equal to Dashcoin, I will change it to Black otherwise it will be Dashcoin.
+      that.player = that.player === "Bitcoin" ? "DashCoin" : "Bitcoin"; //If a player is already equal to Dashcoin, I will change it to Black otherwise it will be Dashcoin.
       that.onPlayerMove();
       $(this).trigger("mouseenter"); //Used for the Event mouseenter to trigger on the player's piece that is being placed.
     });
