@@ -3,7 +3,7 @@ body {  /*center the grid*/
   }
   
   #connect4 {  /*connect4 object is the grid*/
-    background-color: yellow;
+    background-color: blue;
     display: inline-block;
   }
 
@@ -20,18 +20,23 @@ body {  /*center the grid*/
     cursor: pointer;
   }
   
-  .next-red { /*object changes the background for the red player to identify where they may place their token*/
-    background-color: rgba(255, 0, 0, 0.2);
+  .next-Red { /*object changes the background for the red player to identify where they may place their token*/
+    background-color: rgba(213, 68, 68, 0.68)
   }
   
-  .next-blue{ /*connect4 object is the grid*/
-    background-color: rgba(11, 26, 236, 0.2);
+  .next-Yellow{ /*capital Yellow here so DOM can recognize it*/
+    background-color: rgba(221, 205, 60, 0.76)
   }
   
-  .col.red { /*connect4 object is the grid*/
-    background-color: red;
+  .col.Red { /*connect4 object is the grid*/
+    /*background-color: red;*/
+    background-image: url(assets/dash.jpg);
+    background-size: cover;
+	border: 2px solid white;
   }
   
-  .col.blue { /*object changes the background for the blue player to identify where they may place their token*/
-    background-color: blue;
+  .col.Yellow { /*object changes the background for the blue player to identify where they may place their token*/
+    background-image: url(assets/bitcoin.jpg);
+    background-size: cover;
+	border: 2px solid white;
   }

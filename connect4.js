@@ -19,7 +19,7 @@ class Connect4 {
   constructor(selector) {
     this.ROWS = 6; //Rows
     this.COLS = 7; //Columns
-    this.player = "red"; //Start off as Red player
+    this.player = "Red"; //Start off as Red player
     this.selector = selector;
     this.isGameOver = false;
     this.onPlayerMove = function () {};
@@ -32,7 +32,7 @@ class Connect4 {
     const $board = $(this.selector); //DOM element of Board
     $board.empty();
     this.isGameOver = false;
-    this.player = "red";
+    this.player = "Red";
     for (let row = 0; row < this.ROWS; row++) {
       //For Loop of 6 rows using this.ROWS
       const $row = $("<div>") //$ used to identify jQuery object
@@ -101,7 +101,7 @@ class Connect4 {
         return;
       }
       //$(this).trigger('mouseenter');---trigger doesn't work here //Method alternates between players
-      that.player = that.player === "red" ? "blue" : "red"; //If a player is already equal to Red, I will change it to Black otherwise it will be Red.
+      that.player = that.player === "Red" ? "Yellow" : "Red"; //If a player is already equal to Red, I will change it to Black otherwise it will be Red.
       that.onPlayerMove();
       $(this).trigger("mouseenter"); //Used for the Event mouseenter to trigger on the player's piece that is being placed.
     });
@@ -115,8 +115,7 @@ class Connect4 {
   checkForWinner(row, col) {
     const that = this; //Keep track of player
 
-    function $getCell(i, j) {
-      //
+    function $getCell(i, j) {  //Fixes empty cell function
       return $(`.col[data-row='${i}'][data-col='${j}']`); //Function takes in row/column return using jquery, same row which matches it
     }
 
@@ -131,14 +130,14 @@ class Connect4 {
         i < that.ROWS &&
         j >= 0 &&
         j < that.COLS &&
-        $next.data("player") === that.player
+        $next.data("player") === that.player //While the player we are currenly looking at is Equal to 'player' we dropped, We continue to increment
       ) {
         total++;
         i += direction.i;
         j += direction.j;
-        $next = $getCell(i, j);
+        $next = $getCell(i, j);  //Get cell of column & row
       }
-      return total;
+      return total; //Bug to check vertical direction. returns sum of While loop
     }
 
     function checkWin(directionA, directionB) {
@@ -153,7 +152,7 @@ class Connect4 {
       }
     }
 
-    function checkDiagonalBLtoTR() {
+    function checkDiagonalBLtoTR() { //Bottom Left to top right
       return checkWin({ i: 1, j: -1 }, { i: 1, j: 1 });
     }
 
@@ -170,7 +169,7 @@ class Connect4 {
       return checkWin({ i: 0, j: -1 }, { i: 0, j: 1 });
     }
 
-    return (
+    return (  //Return to check wins  
       checkVerticals() ||
       checkHorizontals() ||
       checkDiagonalBLtoTR() ||
