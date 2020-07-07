@@ -18,7 +18,7 @@ class Connect4 { //Declare a class & constructor connect to main.js
     constructor(selector) {
       this.ROWS = 6; //Rows
       this.COLS = 7; //Columns
-      this.player = 'red';
+      this.player = 'red'; //Start off as Red player
       this.selector = selector; 
       this.isGameOver = false;
       this.onPlayerMove = function() {};
@@ -45,9 +45,9 @@ class Connect4 { //Declare a class & constructor connect to main.js
         }
       }
    
-      setupEventListeners() { // create an indicator showing WHERE the piece will drop
+      setupEventListeners() { // Event listener showing WHERE the piece will drop
         const $board = $(this.selector);
-        const that = this;
+        const that = this; //Retain access to the original .this attribute. Need access to the this EVENT function
     
         function findLastEmptyCell(col) {
           const cells = $(`.col[data-col='${col}']`); //Grab all of the cells in the column we selected. 
@@ -71,10 +71,10 @@ class Connect4 { //Declare a class & constructor connect to main.js
             $('.col').removeClass(`next-${that.player}`);  //Remove all the classes that have 'next' style
           });
       
-          $board.on('click', '.col.empty', function() {
+          $board.on('click', '.col.empty', function() { //Event listener On mouse click, function is empty DOM element. Identify which column & row was clicked
             if (that.isGameOver) return;
             const col = $(this).data('col');
-            const $lastEmptyCell = findLastEmptyCell(col);
+            const $lastEmptyCell = findLastEmptyCell(col); //
             $lastEmptyCell.removeClass(`empty next-${that.player}`);
             $lastEmptyCell.addClass(that.player);
             $lastEmptyCell.data('player', that.player);
@@ -89,10 +89,10 @@ class Connect4 { //Declare a class & constructor connect to main.js
                 $('.col.empty').removeClass('empty');
                 return;
               }
-        
-              that.player = (that.player === 'red') ? 'blue' : 'red';
+           //$(this).trigger('mouseenter');---trigger doesn't work here
+              that.player = (that.player === 'red') ? 'blue' : 'red';//If a player is already equal to Red, I will change it to Black otherwise it will be Red.
               that.onPlayerMove();
-              $(this).trigger('mouseenter');
+              $(this).trigger('mouseenter');//Used for the Event mouseenter to trigger on the piece that is being placed. Invoke 
             });
           }
         

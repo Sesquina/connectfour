@@ -3,7 +3,7 @@ body {  /*center the grid*/
   }
   
   #connect4 {  /*connect4 object is the grid*/
-    background-color: yellow;
+    background-color: #79DFEE;
     display: inline-block;
   }
 
@@ -16,7 +16,7 @@ body {  /*center the grid*/
     margin: 5px; /*allows this to appear more like a grid*/
   }
   
-  .col.empty { /*connect4 object is the grid*/
+  .col.empty { /*Hover over empty cells & become a pointer*/
     cursor: pointer;
   }
   
@@ -32,6 +32,6 @@ body {  /*center the grid*/
     background-color: red;
   }
   
-  .col.blue { /*connect4 object is the grid*/
+  .col.blue { /*object changes the background for the blue player to identify where they may place their token*/
     background-color: blue;
   }
