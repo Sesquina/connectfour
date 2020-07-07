@@ -20,22 +20,22 @@ body {  /*center the grid*/
     cursor: pointer;
   }
   
-  .next-Red { /*object changes the background for the red player to identify where they may place their token*/
+  .next-DashCoin{ /*object changes the background for the red player to identify where they may place their token*/
     background-color: rgba(213, 68, 68, 0.68)
   }
   
-  .next-Yellow{ /*capital Yellow here so DOM can recognize it*/
+  .next-Bitcoin{ /*capital Yellow here so DOM can recognize it*/
     background-color: rgba(221, 205, 60, 0.76)
   }
   
-  .col.Red { /*connect4 object is the grid*/
+  .col.DashCoin { /*connect4 object is the grid*/
     /*background-color: red;*/
     background-image: url(assets/dash.jpg);
     background-size: cover;
 	border: 2px solid white;
   }
   
-  .col.Yellow { /*object changes the background for the blue player to identify where they may place their token*/
+  .col.Bitcoin { /*object changes the background for the blue player to identify where they may place their token*/
     background-image: url(assets/bitcoin.jpg);
     background-size: cover;
 	border: 2px solid white;
