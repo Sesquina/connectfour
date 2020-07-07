@@ -18,7 +18,7 @@ $(document).ready(function () {
   });
 });
 
-class Connect4 {
+class Connect4 {  
   //Declare a class & constructor connect to HTML div
   constructor(selector) {
     this.ROWS = 6; //Rows
