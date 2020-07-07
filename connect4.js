@@ -1,57 +1,73 @@
-class Connect4 {
+$(document).ready(function () {  //Initializes JQuery
+    //TODO: Draw a Grid & pass to selector HTML 'connect4'
+    //main.js is running the Connect4 object, Passing the selector, 
+  //Connect4 class is grabbing the selector/DIV & adding HTML to that DIV 
+  const connect4 = new Connect4("#connect4");  
+                             
+  connect4.onPlayerMove = function () {
+    $("#player").text(connect4.player);
+  };
+
+  $("#restart").click(function () {
+    connect4.restart();
+  });
+});
+
+
+class Connect4 { //Declare a class & constructor connect to main.js
     constructor(selector) {
-      this.ROWS = 6;
-      this.COLS = 7;
+      this.ROWS = 6; //Rows
+      this.COLS = 7; //Columns
       this.player = 'red';
-      this.selector = selector;
+      this.selector = selector; 
       this.isGameOver = false;
       this.onPlayerMove = function() {};
-      this.createGrid();
-      this.setupEventListeners();
+      this.createGrid(); //Object that builds grid call great.grid
+      this.setupEventListeners(); //Call the Event Listeners
     }
-
-    createGrid() {
-        const $board = $(this.selector);
+//Loop over every row and create grid.Inside every row, we append 7 different columns and use css style to make it look like a connect4 grid
+    createGrid() { //Method to build 6x7 grid. Build a bunch of Divs 
+        const $board = $(this.selector); //DOM element of Board
         $board.empty();
         this.isGameOver = false;
         this.player = 'red';
-        for (let row = 0; row < this.ROWS; row++) {
-          const $row = $('<div>')
+        for (let row = 0; row < this.ROWS; row++) { //For Loop of 6 rows using this.ROWS
+          const $row = $('<div>')                   //$ used to identify jQuery object
             .addClass('row');
-          for (let col = 0; col < this.COLS; col++) {
+          for (let col = 0; col < this.COLS; col++) { //For loop of 7 columns using this.columns
             const $col = $('<div>')
-              .addClass('col empty')
-              .attr('data-col', col)
-              .attr('data-row', row);
+              .addClass('col empty')  //style col empty for color of token
+              .attr('data-col', col)  //pass the attribute I want to add (column index)
+              .attr('data-row', row);  //pass the row index
             $row.append($col);
           }
-          $board.append($row);
+          $board.append($row);   //Rows are nested inside of each other
         }
       }
    
-      setupEventListeners() {
+      setupEventListeners() { // create an indicator showing WHERE the piece will drop
         const $board = $(this.selector);
         const that = this;
     
         function findLastEmptyCell(col) {
-          const cells = $(`.col[data-col='${col}']`);
-          for (let i = cells.length - 1; i >= 0; i--) {
-            const $cell = $(cells[i]);
-            if ($cell.hasClass('empty')) {
+          const cells = $(`.col[data-col='${col}']`); //Grab all of the cells in the column we selected. 
+          for (let i = cells.length - 1; i >= 0; i--) {  //Backwards loop 
+             const $cell = $(cells[i]);  //Grab all columns with same attribute 'data-col' equal to the column index passed in. This will return an array of hovered objects
+            if ($cell.hasClass('empty')) { //If cell has class of 'empty then RETURN that cell
               return $cell;
             }
           }
           return null;
         }
 
-        $board.on('mouseenter', '.col.empty', function() {
+        $board.on('mouseenter', '.col.empty', function() { //jquery method where you pass the event you want to listen to(mouse enter) and the selector (col.empty)
             if (that.isGameOver) return;
-            const col = $(this).data('col');
-            const $lastEmptyCell = findLastEmptyCell(col);
+            const col = $(this).data('col');  //Prints out the column index. We need to grab all of the cells in the column until we find an empty one.
+            const $lastEmptyCell = findLastEmptyCell(col); //As you hover over these cells
             $lastEmptyCell.addClass(`next-${that.player}`);
           });
       
-          $board.on('mouseleave', '.col', function() {
+          $board.on('mouseleave', '.col', function() {  //Event listener that removes 
             $('.col').removeClass(`next-${that.player}`);
           });
       
@@ -74,7 +90,7 @@ class Connect4 {
                 return;
               }
         
-              that.player = (that.player === 'red') ? 'Blue' : 'red';
+              that.player = (that.player === 'red') ? 'blue' : 'red';
               that.onPlayerMove();
               $(this).trigger('mouseenter');
             });
