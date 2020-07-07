@@ -27,7 +27,7 @@ h4,
 }
 
 .col {
-  /*Each column needs a particular width & height*/
+  /*Each column needs a particular width & height to make it rounded*/
   width: 70px;
   height: 70px;
   display: inline-block;

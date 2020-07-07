@@ -9,7 +9,7 @@ $(document).ready(function () {
     $("#player").text(connect4.player);
   };
 
-  $("#restart").click(function () {
+  $("#restart").click(function () { //calls DOM HTML restart button
     connect4.restart();
   });
 });
@@ -23,7 +23,7 @@ class Connect4 {
     this.selector = selector;
     this.isGameOver = false;
     this.onPlayerMove = function () {};
-    this.createGrid(); //Object that builds grid call great.grid
+    this.createGrid(); //Object that builds grid call create.grid
     this.setupEventListeners(); //Call the Event Listeners
   }
   //Loop over every row and create grid.Inside every row, we append 7 different columns and use css style to make it look like a connect4 grid
@@ -177,7 +177,7 @@ class Connect4 {
     );
   }
 
-  restart() {
+  restart() { //Restart the board
     this.createGrid();
     this.onPlayerMove();
   }
