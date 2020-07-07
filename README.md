@@ -25,4 +25,4 @@ The gamer will continue until a winning combination of four is reached by player
 -Animation for Winner
 
 ### Live Site
-Link to the [Connect Four Crypto Site](https://connect4crypto.netlify.app).
+[Connect Four Crypto Site](https://connect4crypto.netlify.app).
