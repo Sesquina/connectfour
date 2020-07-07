@@ -22,3 +22,5 @@ The gamer will continue until a winning combination of four is reached by player
 ![](./assets/wireframe.jpg)
 
 ### Additional Features
+-Animation for Winner
+
