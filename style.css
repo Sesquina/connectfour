@@ -3,7 +3,7 @@ body {  /*center the grid*/
   }
   
   #connect4 {  /*connect4 object is the grid*/
-    background-color: #yellow;
+    background-color: yellow;
     display: inline-block;
   }
 
