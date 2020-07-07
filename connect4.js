@@ -15,13 +15,13 @@ $(document).ready(function () {
 });
 
 class Connect4 {
-  //Declare a class & constructor connect to main.js
+  //Declare a class & constructor connect to HTML div
   constructor(selector) {
     this.ROWS = 6; //Rows
     this.COLS = 7; //Columns
     this.player = "Bitcoin"; //Start off as Bitcoin player
     this.selector = selector;
-    this.isGameOver = false;
+    this.isGameOver = false; 
     this.onPlayerMove = function () {};
     this.createGrid(); //Object that builds grid call create.grid
     this.setupEventListeners(); //Call the Event Listeners
@@ -89,7 +89,7 @@ class Connect4 {
       $lastEmptyCell.addClass(that.player);
       $lastEmptyCell.data("player", that.player);
 
-      const winner = that.checkForWinner(
+      const winner = that.checkForWinner( //check the winner 
         $lastEmptyCell.data("row"),
         $lastEmptyCell.data("col")
       );
@@ -135,17 +135,17 @@ class Connect4 {
         total++;
         r += direction.r;
         c += direction.c;
-        $next = $getCell(r, c);  //Get cell of column & row
+        $next = $getCell(r, c);  //Get cell of column & row. the $.next() method allows us to search through the immediately following sibling of these elements in the DOM tree and construct a new jQuery object from the matching elements.
       }
       return total; //Bug to check vertical direction. Returns sum of While loop
     }
 
     function checkWin(directionA, directionB) {
       const total =
-        1 + //Piece placed down is going to be equivalent to one, now we need to check in the u direction i:-1 ..down direction i:1 j:0
+        1 + //Piece placed down is going to be equivalent to one, now we need to check in the u direction r:-1 ..down direction r:1 c:0
         checkDirection(directionA) +
         checkDirection(directionB);
-      if (total >= 4) {
+      if (total >= 4) {  //4 tokens match
         return that.player;
       } else {
         return null;
