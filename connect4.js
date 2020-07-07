@@ -51,20 +51,20 @@ class Connect4 { //Declare a class & constructor connect to main.js
     
         function findLastEmptyCell(col) {
           const cells = $(`.col[data-col='${col}']`); //Grab all of the cells in the column we selected. 
-          for (let i = cells.length - 1; i >= 0; i--) {  //Backwards loop 
+          for (let i = cells.length - 1; i >= 0; i--) {  //Backwards loop of the columns 
              const $cell = $(cells[i]);  //Grab all columns with same attribute 'data-col' equal to the column index passed in. This will return an array of hovered objects
-            if ($cell.hasClass('empty')) { //If cell has class of 'empty then RETURN that cell
+            if ($cell.hasClass('empty')) { //If the cell has a class of 'empty' then RETURN that cell
               return $cell;
             }
           }
           return null;
         }
 
-        $board.on('mouseenter', '.col.empty', function() { //jquery method where you pass the event you want to listen to(mouse enter) and the selector (col.empty)
+        $board.on('mouseenter', '.col.empty', function() { //Jquery method where you pass the event you want to listen to(mouse enter) and the selector (col.empty)
             if (that.isGameOver) return;
             const col = $(this).data('col');  //Prints out the column index. We need to grab all of the cells in the column until we find an empty one.
-            const $lastEmptyCell = findLastEmptyCell(col); //As you hover over these cells
-            $lastEmptyCell.addClass(`next-${that.player}`);
+            const $lastEmptyCell = findLastEmptyCell(col); //As you hover over these cells you want to get the last empty cell in that column
+            $lastEmptyCell.addClass(`next-${that.player}`);//add Class lastemptycell being equal to CSS 'next' style
           });
       
           $board.on('mouseleave', '.col', function() {  //Event listener that removes 
