@@ -7,7 +7,7 @@ $(document).ready(function () {
   //JQuery is a javascript library(collection of class and methods).
   //When it is used in a web page it creates its own object. $ holds the referances of that object.
 //Later at any point of time we can use $ to use any jQuery method .
-  const connect4 = new Connect4("#connect4");
+  const connect4 = new Connect4("#connect4");   //Use FCC video as a reference bulding this board.
 
   connect4.onMove = function () {
     $("#player").text(connect4.player);
@@ -115,7 +115,7 @@ class Connect4 {
 
   //create checkwinner function. Inside function has 2 parameters that will take last row/column that was last clicked
   //Check if there is a diagonal/vertical horizontal row or line that allows last piece to win
-  //If that piece drops & win, Winner will be alerted
+  //If that piece drops & wins, Winner will be alerted
   checkForWinner(row, col) {
     const that = this; //Keep track of player
 
@@ -186,3 +186,7 @@ class Connect4 {
     this.onMove();
   }
 }
+
+
+///I Learned how to use the jquery library. $board, DOM manipulation, selectors, $next data to pull data from specific areas
+//$getcell allowed me to identify the circular/empty areas of the grid.
