@@ -9,7 +9,7 @@ $(document).ready(function () {
 //Later at any point of time we can use $ to use any jQuery method .
   const connect4 = new Connect4("#connect4");
 
-  connect4.onPlayerMove = function () {
+  connect4.onMove = function () {
     $("#player").text(connect4.player);
   };
 
@@ -26,7 +26,7 @@ class Connect4 {
     this.player = "Bitcoin"; //Start off as Bitcoin player
     this.selector = selector;
     this.isGameOver = false; 
-    this.onPlayerMove = function () {};
+    this.onMove = function () {};
     this.createGrid(); //Object that builds grid call create.grid
     this.setupEventListeners(); //Call the Event Listeners
   }
@@ -106,7 +106,7 @@ class Connect4 {
       }
       //$(this).trigger('mouseenter');---trigger doesn't work here //Method alternates between players
       that.player = that.player === "Bitcoin" ? "DashCoin" : "Bitcoin"; //If a player is already equal to Dashcoin, I will change it to Black otherwise it will be Dashcoin.
-      that.onPlayerMove();
+      that.onMove();
       $(this).trigger("mouseenter"); //Used for the Event mouseenter to trigger on the player's piece that is being placed.
     });
   }
@@ -183,6 +183,6 @@ class Connect4 {
 
   restart() { //Restart the board
     this.createGrid();
-    this.onPlayerMove();
+    this.onMove();
   }
 }
