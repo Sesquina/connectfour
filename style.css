@@ -53,14 +53,14 @@ h4,
 
 .col.DashCoin {
   /*connect4 object is the grid*/
-  /*background-color: red;*/
+ 
   background-image: url(assets/dash.jpg);
   background-size: cover;
   border: 2px solid white;
 }
 
 .col.Bitcoin {
-  /*object changes the background for the blue player to identify where they may place their token*/
+  /*object changes the background for the yellow player to identify where they may place their token*/
   background-image: url(assets/bitcoin.jpg);
   background-size: cover;
   border: 2px solid white;
