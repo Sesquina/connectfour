@@ -6,26 +6,27 @@ $(document).ready(function () {
 
   //JQuery is a javascript library(collection of class and methods).
   //When it is used in a web page it creates its own object. $ holds the referances of that object.
-//Later at any point of time we can use $ to use any jQuery method .
-  const connect4 = new Connect4("#connect4");   //Use FCC video as a reference bulding this board.
+  //Later at any point of time we can use $ to use any jQuery method .
+  const connect4 = new Connect4("#connect4"); //Use FCC video as a reference bulding this board.
 
   connect4.onMove = function () {
     $("#player").text(connect4.player);
   };
 
-  $("#restart").click(function () { //calls DOM HTML restart button
+  $("#restart").click(function () {
+    //calls DOM HTML restart button
     connect4.restart();
   });
 });
 
-class Connect4 {  
+class Connect4 {
   //Declare a class & constructor connect to HTML div
   constructor(selector) {
     this.ROWS = 6; //Rows
     this.COLS = 7; //Columns
     this.player = "Bitcoin"; //Start off as Bitcoin player
     this.selector = selector;
-    this.isGameOver = false; 
+    this.isGameOver = false;
     this.onMove = function () {};
     this.createGrid(); //Object that builds grid call create.grid
     this.setupEventListeners(); //Call the Event Listeners
@@ -93,7 +94,8 @@ class Connect4 {
       $lastEmptyCell.addClass(that.player);
       $lastEmptyCell.data("player", that.player);
 
-      const winner = that.checkForWinner( //check the winner 
+      const winner = that.checkForWinner(
+        //check the winner
         $lastEmptyCell.data("row"),
         $lastEmptyCell.data("col")
       );
@@ -119,7 +121,8 @@ class Connect4 {
   checkForWinner(row, col) {
     const that = this; //Keep track of player
 
-    function $getCell(r, c) {  //Fixes empty cell function
+    function $getCell(r, c) {
+      //Fixes empty cell function
       return $(`.col[data-row='${r}'][data-col='${c}']`); //Function takes in row/column return using jquery, same row which matches it
     }
 
@@ -139,7 +142,7 @@ class Connect4 {
         total++;
         r += direction.r;
         c += direction.c;
-        $next = $getCell(r, c);  //Get cell of column & row. the $.next() method allows us to search through the immediately following sibling of these elements in the DOM tree and construct a new jQuery object from the matching elements.
+        $next = $getCell(r, c); //Get cell of column & row. the $.next() method allows us to search through the immediately following sibling of these elements in the DOM tree and construct a new jQuery object from the matching elements.
       }
       return total; //Bug to check vertical direction. Returns sum of While loop
     }
@@ -149,18 +152,21 @@ class Connect4 {
         1 + //Piece placed down is going to be equivalent to one, now we need to check in the u direction r:-1 ..down direction r:1 c:0
         checkDirection(directionA) +
         checkDirection(directionB);
-      if (total >= 4) {  //4 tokens match
+      if (total >= 4) {
+        //4 tokens match
         return that.player;
       } else {
         return null;
       }
     }
 
-    function checkDiagonalBLtoTR() { //Bottom Left to top right
+    function checkDiagonalBLtoTR() {
+      //Bottom Left to top right
       return checkWin({ r: 1, c: -1 }, { r: 1, c: 1 });
     }
 
-    function checkDiagonalTLtoBR() { //Top Left to Bottom right
+    function checkDiagonalTLtoBR() {
+      //Top Left to Bottom right
       return checkWin({ r: 1, c: 1 }, { r: -1, c: -1 });
     }
 
@@ -173,7 +179,8 @@ class Connect4 {
       return checkWin({ r: 0, c: -1 }, { r: 0, c: 1 });
     }
 
-    return (  //Return to check wins  
+    return (
+      //Return to check wins
       checkVerticals() ||
       checkHorizontals() ||
       checkDiagonalBLtoTR() ||
@@ -181,12 +188,12 @@ class Connect4 {
     );
   }
 
-  restart() { //Restart the board
+  restart() {
+    //Restart the board
     this.createGrid();
     this.onMove();
   }
 }
-
 
 ///I Learned how to use the jquery library. $board, DOM manipulation, selectors, $next data to pull data from specific areas
 //$getcell allowed me to identify the circular/empty areas of the grid.
