@@ -102,10 +102,21 @@ class Connect4 {
       if (winner) {
         //If there is a winner, this will run
         that.isGameOver = true;
-        alert(`Game Over! ${that.player} Player has won!`);
+        // alert(`Game Over! ${that.player} Player has won!`);
+        Swal.fire({
+          title: `Game Over<br/> ${that.player} Player has won!`,
+          width: 600,
+          padding: '3em',
+          background: '#fff url(/assets/yellowwin.jpg)',
+        })
         $(".col.empty").removeClass("empty");
         return;
       }
+
+     
+
+
+
       //$(this).trigger('mouseenter');---trigger doesn't work here //Method alternates between players
       that.player = that.player === "Bitcoin" ? "DashCoin" : "Bitcoin"; //If a player is already equal to Dashcoin, I will change it to Black otherwise it will be Dashcoin.
       that.onMove();

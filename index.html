@@ -7,11 +7,13 @@
       href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;800&display=swap"
       rel="stylesheet"
     />
+
     <script
       src="https://code.jquery.com/jquery-3.5.1.js"
       integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
       crossorigin="anonymous"
     ></script>
+
     <script src="connect4.js"></script>
   </head>
   <!----Connect Four Game using Crypto coins as the game pieces-->
@@ -19,12 +21,18 @@
     <div class="box">
       <h1>Let's Play CryptoFour!</h1>
     </div>
-    <h4>It's <span id="player">Bitcoin</span>'s turn!</h4>
 
+    <div class="playerbox">
+    <h4>It's <br/><span id="player">Bitcoin</span>'s turn!</h4>
+    </div>
     <div id="connect4"></div>
     <!--Create DIV 'connect4' that allows GRID to exist-->
 
     <br />
     <button class="button button-1" id="restart">RESTART</button>
+
+    <script src="sweetalert2.all.min.js"></script>
+    <!-- Optional: include a polyfill for ES6 Promises for IE11 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   </body>
 </html>

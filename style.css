@@ -81,8 +81,30 @@ h4,
   font-weight: 2em;
   color: #04b5e5;
 }
+
+.playerbox {
+  position: absolute;
+  width: 220px;
+  height: 200px;
+  z-index: 15;
+  top: 50%;
+  left:20%;
+  right: 50%;
+  margin: -100px 0 0 -150px;
+  background: yellow;
+  justify-content: space-between;
+  border: 1px solid #04b5e5;
+  box-sizing: border-box;
+  filter: drop-shadow(5px 5px 10px black);
+
+}
+.playerbox :first-child {
+  align-self: center;
+}
+
 #connect4 {
   /*connect4 object is the grid*/
+  margin-top: 1em;
   background-color: #006097;
   display: inline-block;
   filter: drop-shadow(5px 5px 10px black);
